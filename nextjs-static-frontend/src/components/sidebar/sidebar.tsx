@@ -56,8 +56,8 @@ export default function Sidebar() {
 
         {sidebarOpen && (
           <div className="flex-1 overflow-y-auto py-4">
-            {DOCS_INDEX.map(({ key, label, items }) => (
-              <NavigationItem key={key} label={label} items={items} />
+            {DOCS_INDEX.map(({ key, label, items, link }) => (
+              <NavigationItem key={key} label={label} items={items} link={link} />
             ))}
           </div>
         )}

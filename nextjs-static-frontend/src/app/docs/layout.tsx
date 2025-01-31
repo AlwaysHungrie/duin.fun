@@ -44,7 +44,7 @@ export default function DocsLayout({
             <div className="flex items-center gap-2 text-gray-600">
               <span>{currentSection.label}</span>
               <HiChevronRight className="h-4 w-4" />
-              <span className="text-gray-900">{currentPage.label}</span>
+              {currentPage && <span className="text-gray-900">{currentPage.label}</span>}
             </div>
           </div>
 

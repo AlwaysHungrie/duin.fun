@@ -14,32 +14,22 @@ export const DOCS_INDEX = [
         link: '/docs/getting-started/register',
       },
       {
-        key: 'roadmap',
-        label: 'Roadmap',
-        link: '/docs/getting-started/roadmap',
+        key: 'attestations',
+        label: 'Attestations',
+        link: '/docs/getting-started/attestations',
       },
     ],
   },
   {
     key: 'cheer',
     label: 'Cheer',
-    items: [
-      {
-        key: 'how-does-it-work',
-        label: 'How does it work?',
-        link: '/docs/cheer/how-does-it-work',
-      },
-    ],
+    link: '/docs/cheer',
+    items: [ ],
   },
   {
-    key: 'autonomy',
-    label: 'Autonomy',
-    items: [
-      {
-        key: 'verifiable-autonomy',
-        label: 'Verifiable Autonomy',
-        link: '/docs/autonomy/verifiable-autonomy',
-      },
-    ],
+    key: 'verifiable-autonomy',
+    label: 'Verifiable Autonomy',
+    link: '/docs/verifiable-autonomy',
+    items: [ ],
   },
 ]

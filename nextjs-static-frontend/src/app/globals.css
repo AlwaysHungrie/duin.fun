@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components {
+  blockquote p {
+    @apply mb-2;
+  }
+  
+  p:not(blockquote p) {
+    @apply mb-4;
+  }
+
+  code:not(blockquote code) {
+    @apply p-1;
+  }
+}
