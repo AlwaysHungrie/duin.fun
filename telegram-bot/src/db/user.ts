@@ -1,6 +1,8 @@
+import { generateSecret } from '../utils/secret'
 import prisma from './prisma'
 
 export async function registerAddress(chatId: string, address: string) {
+  const secret = generateSecret()
   await prisma.user.upsert({
     where: {
       chatId,
@@ -11,8 +13,10 @@ export async function registerAddress(chatId: string, address: string) {
     create: {
       chatId,
       address,
+      twitterNonce: secret,
     },
   })
+  return secret
 }
 
 export async function getRegisteredAddress(chatId: string) {

@@ -21,6 +21,7 @@ How it works:
 
 1\\. Register your wallet address with the /register command
    • This ensures your funds remain secure by preventing others from claiming your transaction as theirs
+   • Connection between your wallet address and telegram id always remains secure and not shared with anyone
 
 2\\. Start a commitment using the /duin command and include:
    • The task description

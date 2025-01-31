@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { Reddit_Sans } from 'next/font/google'
 import './globals.css'
-// import Providers from './providers'
-// import { DialogOverlay } from '@/components/dialogs/dialogOverlay'
+import Providers from '@/providers/provider'
+import { DialogOverlay } from '@/components/dialogs/dialogOverlay'
 
 const redditSans = Reddit_Sans({
   variable: '--font-reddit-sans',
@@ -25,11 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${redditSans.variable} antialiased`}>
-        {children}
-        {/* <Providers>
+        <Providers>
           {children}
           <DialogOverlay />
-        </Providers> */}
+        </Providers>
       </body>
     </html>
   )

@@ -1,5 +1,6 @@
 'use client'
 
+import ConnectWallet from '@/components/connectWallet/connectWallet'
 import { CONFIG } from '@/config'
 // import ConnectWallet from '@/components/connectWallet/connectWallet'
 import { LANDING_PAGE } from '@/copy/landingPage'
@@ -17,7 +18,7 @@ export default function Home() {
     <div className="bg-homeBg min-h-screen font-redditSans">
       <div className="flex flex-col items-center h-screen p-4 overflow-hidden w-screen relative">
         <div className="flex w-full z-10 pt-2">
-          {/* <ConnectWallet isHomePage={true} /> */}
+          <ConnectWallet isHomePage={true} />
         </div>
         <div
           onClick={handleLaunchOnTelegram}
