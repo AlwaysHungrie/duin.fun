@@ -1,6 +1,6 @@
 import Markdown from '@/components/markdown';
 
-export const REGISTER = `
+const REGISTER = `
 # Register
 
 `
