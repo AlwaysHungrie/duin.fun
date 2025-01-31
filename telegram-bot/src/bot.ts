@@ -16,7 +16,6 @@ export const initBot = () => {
   })
 
   bot.on('message', (message) => {
-    console.log(message)
     if (message.reply_to_message) {
       processReply(message, bot)
     }

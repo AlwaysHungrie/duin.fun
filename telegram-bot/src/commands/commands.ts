@@ -5,6 +5,7 @@ import { supportedNetworksCommand } from './handlers/supportedNetworksCommand'
 import { exampleCommand } from './handlers/exampleCommand'
 import { duinCommand } from './handlers/duinCommand'
 import { registerCommand } from './handlers/registerCommand'
+import { claimXHandleCommand } from './handlers/claimxhandle'
 
 export const commands: Command[] = [
   startCommand,
@@ -13,4 +14,5 @@ export const commands: Command[] = [
   exampleCommand,
   duinCommand,
   registerCommand,
+  claimXHandleCommand,
 ]
