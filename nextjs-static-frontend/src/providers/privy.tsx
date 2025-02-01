@@ -18,6 +18,7 @@ export default function PrivyProvider({ children }: PrivyProviderProps) {
           accentColor: '#FA3B6A',
           logo: '/squareLogo.svg',
         },
+        walletConnectCloudProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
         supportedChains: CONFIG.SUPPORTED_CHAINS,
         // Create embedded wallets for users who don't have a wallet
         embeddedWallets: {
