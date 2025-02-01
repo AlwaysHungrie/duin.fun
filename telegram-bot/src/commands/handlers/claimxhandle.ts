@@ -19,11 +19,16 @@ export const claimXHandleCommand: Command = {
     }
 
     const user = await getUserByChatId(chatId.toString())
-    if (!user || !user.address || !user.twitterNonce) {
+    if (!user || !user.address) {
       bot.sendMessage(
         chatId,
         'Unable to find an address registered with this account. Please use /register <your address> first'
       )
+      return
+    }
+
+    if (!user.twitterNonce) {
+      bot.sendMessage(chatId, 'An X handle is might already be associated with this account. Please use /register <your address> again')
       return
     }
 
@@ -47,7 +52,7 @@ export const claimXHandleCommand: Command = {
     await updateUserTwitterHandle(user.chatId, tweet.author)
     bot.sendMessage(
       chatId,
-      'X handle claimed successfully. All your tasks will be tweeted and can receive cheer from here on'
+      'X handle claimed successfully. All your tasks will be posted to your X handle'
     )
   },
 }

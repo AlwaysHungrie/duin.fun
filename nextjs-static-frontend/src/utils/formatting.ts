@@ -9,3 +9,7 @@ export const formatWeiBalance = (balance?: bigint, decimals: number = 4) => {
   const balanceInEth = ethers.formatEther(balance)
   return Number(balanceInEth).toFixed(decimals)
 }
+
+export const ethToWei = (amount: string) => {
+  return ethers.parseEther(amount).toString()
+}

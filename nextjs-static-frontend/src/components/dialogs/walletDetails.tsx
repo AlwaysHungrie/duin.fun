@@ -11,6 +11,7 @@ interface TransactionInputProps {
   onClear?: () => void
   buttonText: string
   allowSubmit: boolean
+  type: 'text' | 'number'
 }
 
 const TransactionInput = ({
@@ -21,7 +22,8 @@ const TransactionInput = ({
   onSubmit,
   onClear,
   buttonText,
-  allowSubmit
+  allowSubmit,
+  type,
 }: TransactionInputProps) => {
   if (hash) {
     return (
@@ -46,7 +48,7 @@ const TransactionInput = ({
   return (
     <div className="flex gap-1 items-center">
       <input
-        type="text"
+        type={type}
         placeholder={placeholder}
         value={value}
         onChange={(e) => onValueChange(e.target.value)}
@@ -71,10 +73,18 @@ interface NetworkStatusProps {
   isSwitching: boolean
 }
 
-const NetworkStatus = ({ chainName, isChainValid, onSwitchNetwork, isSwitching }: NetworkStatusProps) => {
+const NetworkStatus = ({
+  chainName,
+  isChainValid,
+  onSwitchNetwork,
+  isSwitching,
+}: NetworkStatusProps) => {
   if (!isChainValid) {
     return (
-      <div className="mt-2 md:mt-8 text-sm text-gray-400" onClick={onSwitchNetwork}>
+      <div
+        className="mt-2 md:mt-8 text-sm text-gray-400"
+        onClick={onSwitchNetwork}
+      >
         <span className="font-bold">Switch Network</span>
       </div>
     )
@@ -86,7 +96,10 @@ const NetworkStatus = ({ chainName, isChainValid, onSwitchNetwork, isSwitching }
         Connected to&nbsp;
         <span className="font-bold">{chainName}</span>
       </div>
-      <span className="text-xs text-gray-400 cursor-pointer" onClick={onSwitchNetwork}>
+      <span
+        className="text-xs text-gray-400 cursor-pointer"
+        onClick={onSwitchNetwork}
+      >
         {isSwitching ? '...' : '(Switch)'}
       </span>
     </>
@@ -103,15 +116,6 @@ import { useDialogStore } from '@/providers/dialog'
 import { useRouter } from 'next/navigation'
 import { CONFIG } from '@/config'
 import Avatar from '../avatar'
-
-// const amountInWei = (amount: string) => {
-//   try {
-//     return BigInt(amount) * BigInt(10 ** 18)
-//   } catch (e) {
-//     console.error(e)
-//     return BigInt(0)
-//   }
-// }
 
 export default function WalletDetails() {
   const router = useRouter()
@@ -136,7 +140,9 @@ export default function WalletDetails() {
   const isPrivyManaged = activeWallet?.walletClientType === 'privy'
   const isChainValid = network in CONFIG.VALID_CHAINS_LABELS
   const chainName = isChainValid
-    ? CONFIG.VALID_CHAINS_LABELS[network as keyof typeof CONFIG.VALID_CHAINS_LABELS]
+    ? CONFIG.VALID_CHAINS_LABELS[
+        network as keyof typeof CONFIG.VALID_CHAINS_LABELS
+      ]
     : 'Unknown'
 
   const getBalance = useCallback(async (wallet: ConnectedWallet) => {
@@ -161,7 +167,7 @@ export default function WalletDetails() {
   const onSwitchNetwork = async () => {
     if (isSwitching) return
     setIsSwitching(true)
-    
+
     const chainId = network.split(':')[1]
     const currentIndex = CONFIG.SUPPORTED_CHAINS.findIndex(
       (chain) => chain.id.toString() === chainId
@@ -189,8 +195,49 @@ export default function WalletDetails() {
   }
 
   const handleSendTokens = async () => {
-    if (!amount) return
-    // Implementation pending
+    try {
+      if (!amount) return
+
+      const parsedAmount = ethers.parseEther(amount)
+
+      const formattedAddress = ethers.getAddress(
+        process.env.NEXT_PUBLIC_BOT_ADDRESS!
+      )
+      const provider = await activeWallet.getEthereumProvider()
+      const ethersProvider = new ethers.BrowserProvider(provider)
+      const signer = await ethersProvider.getSigner()
+
+      const transaction = {
+        to: formattedAddress,
+        value: parsedAmount,
+      }
+
+      const gasLimit = await ethersProvider.estimateGas(transaction)
+      const gasFees = (await ethersProvider.getFeeData()).gasPrice
+      if (!gasFees) {
+        console.error('Failed to get gas fees')
+        return
+      }
+
+      const tx = await signer.sendTransaction({
+        ...transaction,
+        gasLimit: gasLimit,
+        gasPrice: gasFees,
+      })
+
+      if (!tx) {
+        throw new Error('Failed to send transaction')
+      }
+
+      const receipt = await tx.wait()
+      if (!receipt) {
+        throw new Error('Failed to get transaction receipt')
+      }
+
+      setTransactionHash(receipt?.hash)
+    } catch (error) {
+      console.error('Failed to send tokens', error)
+    }
   }
 
   return (
@@ -243,7 +290,10 @@ export default function WalletDetails() {
         <div className="flex flex-col gap-4">
           <div className="text-right">
             <div className="text-sm text-gray-400">Balance</div>
-            <div className="text-xl font-bold">{`${formatWeiBalance(balanceInWei, 8)} ETH`}</div>
+            <div className="text-xl font-bold">{`${formatWeiBalance(
+              balanceInWei,
+              8
+            )} ETH`}</div>
           </div>
 
           <div className="text-right">
@@ -261,6 +311,7 @@ export default function WalletDetails() {
               }}
               buttonText="Sign"
               allowSubmit={Boolean(allowSignMessage)}
+              type="text"
             />
           </div>
 
@@ -279,6 +330,7 @@ export default function WalletDetails() {
               }}
               buttonText="Send"
               allowSubmit={Boolean(allowSendTokens)}
+              type="number"
             />
           </div>
         </div>
