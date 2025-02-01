@@ -20,7 +20,7 @@ export const duinCommand: Command = {
   description: 'Commit to a task',
   handler: async (message) => {
     const chatId = message.chat.id
-    const registeredAddress = await getRegisteredAddress(chatId.toString())
+    const {address: registeredAddress, twitterHandle} = await getRegisteredAddress(chatId.toString())
     if (!registeredAddress) {
       bot.sendMessage(
         chatId,
@@ -55,7 +55,7 @@ export const duinCommand: Command = {
         if (initiateRefund) {
           handleRefund(transactionDetails, `${chatId}-${messageId}`)
         } else if (initiateAcceptance) {
-          handleAcceptance(transactionDetails, `${chatId}-${messageId}`, task || '<empty message>')
+          handleAcceptance(transactionDetails, `${chatId}-${messageId}`, task || '<empty message>', twitterHandle)
         }
       }
       return

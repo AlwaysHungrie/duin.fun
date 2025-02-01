@@ -3,6 +3,10 @@ import Markdown from '@/components/markdown';
 const CHEER = `
 # Cheer
 
+> [!WARNING]
+> This feature is a work in progress.
+> Cheers recieved will not be processed by the bot currently.
+
 Follow [@getduinbot](https://x.com/getduinbot) on X and get notified when someone from the community is publicly adding a task.
 
 If you really want them to complete their task, you can also cheer for them by adding your own commitment to their task which will only be released to them once they've completed their task.

@@ -26,6 +26,15 @@ if (!openaiApiKey) {
   throw new Error('OPENAI_API_KEY is required')
 }
 
+const twitterApiKey = process.env.TWITTER_API_KEY
+const twitterApiKeySecret = process.env.TWITTER_API_KEY_SECRET
+const twitterBearerToken = process.env.TWITTER_BEARER_TOKEN
+const twitterAccessToken = process.env.TWITTER_ACCESS_TOKEN
+const twitterAccessTokenSecret = process.env.TWITTER_ACCESS_TOKEN_SECRET
+if (!twitterApiKey || !twitterApiKeySecret || !twitterBearerToken || !twitterAccessToken || !twitterAccessTokenSecret) {
+  throw new Error('TWITTER_CONFIG is required')
+}
+
 const baseRpcUrl = process.env.BASE_RPC_URL || 'https://mainnet.base.org'
 const scrollRpcUrl = process.env.SCROLL_RPC_URL || 'https://scroll-mainnet.chainstacklabs.com'
 const ethereumRpcUrl = process.env.ETHEREUM_RPC_URL || 'https://eth.llamarpc.com'
@@ -39,4 +48,11 @@ export default {
   SCROLL_RPC_URL: scrollRpcUrl,
   ETHEREUM_RPC_URL: ethereumRpcUrl,
   OPENAI_API_KEY: openaiApiKey,
+  TWITTER_CONFIG: {
+    API_KEY: twitterApiKey,
+    API_KEY_SECRET: twitterApiKeySecret,
+    BEARER_TOKEN: twitterBearerToken,
+    ACCESS_TOKEN: twitterAccessToken,
+    ACCESS_TOKEN_SECRET: twitterAccessTokenSecret,
+  },
 }

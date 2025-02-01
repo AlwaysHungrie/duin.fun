@@ -30,16 +30,18 @@ export async function getTweet(text: string) {
         },
       }
     )
+    console.log(response.data)
     const responseJson = response.data
   
-    if (!responseJson.html || !responseJson.author_name) {
+    if (!responseJson.html || !responseJson.author_name || !responseJson.author_url) {
       return null
     }
 
     const tweetText = getTweetText(responseJson.html)
+    const author = responseJson.author_url.split('/').at(-1)
     return {
       text: tweetText,
-      author: responseJson.author_name,
+      author,
     }
   } catch (error) {
     console.error(error)

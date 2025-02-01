@@ -22,7 +22,8 @@ export async function createTransaction(
   messageId: string,
   status: TransactionStatus,
   acceptingReplies: boolean,
-  taskInfo?: string
+  taskInfo?: string,
+  taskTweetId?: string
 ) {
   return await prisma.transaction.create({
     data: {
@@ -31,6 +32,7 @@ export async function createTransaction(
       status,
       acceptingReplies,
       taskInfo,
+      taskTweetId,
     },
   })
 }
@@ -49,11 +51,17 @@ export async function updateRefundTransaction(
 export async function updateCompleteTransaction(
   txHash: string,
   completeTxHash: string,
-  status: TransactionStatus
+  status: TransactionStatus,
+  endTaskTweetId?: string
 ) {
   return await prisma.transaction.update({
     where: { txHash },
-    data: { completeTxHash, status, acceptingReplies: false },
+    data: {
+      completeTxHash,
+      status,
+      acceptingReplies: false,
+      taskTweetId: endTaskTweetId,
+    },
   })
 }
 

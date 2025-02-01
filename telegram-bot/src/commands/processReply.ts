@@ -70,5 +70,5 @@ export default async function processReply(message: TelegramBot.Message, bot: Te
   }
 
   bot.sendMessage(chatId, `(${responseObject['reason']})\n${taskCompleteMessage}`)
-  handleCompletion(transactionDetails)
+  handleCompletion(transactionDetails, responseObject['reason'], transaction.taskTweetId)
 }

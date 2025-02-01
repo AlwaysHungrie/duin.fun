@@ -38,7 +38,7 @@ export async function getRegisteredAddress(chatId: string) {
       chatId,
     },
   })
-  return user?.address
+  return { address: user?.address, twitterHandle: user?.twitterHandle }
 }
 
 export async function getUser(address: string) {

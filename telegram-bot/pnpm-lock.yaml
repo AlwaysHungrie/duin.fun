@@ -32,6 +32,9 @@ importers:
       openai:
         specifier: ^4.80.1
         version: 4.80.1
+      twitter-api-v2:
+        specifier: ^1.19.0
+        version: 1.19.0
       typescript:
         specifier: ^5.7.3
         version: 5.7.3
@@ -1019,6 +1022,9 @@ packages:
 
   tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
+
+  twitter-api-v2@1.19.0:
+    resolution: {integrity: sha512-jfG4aapNPM9+4VxNxn0TXvD8Qj8NmVx6cY0hp5K626uZ41qXPaJz33Djd3y6gfHF/+W29+iZz0Y5qB869d/akA==}
 
   typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
@@ -2329,6 +2335,8 @@ snapshots:
       safe-buffer: 5.2.1
 
   tweetnacl@0.14.5: {}
+
+  twitter-api-v2@1.19.0: {}
 
   typed-array-buffer@1.0.3:
     dependencies:

@@ -43,4 +43,7 @@ model Transaction {
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  taskTweetId String?
+  endTaskTweetId String?
 }

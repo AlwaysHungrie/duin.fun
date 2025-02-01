@@ -11,6 +11,8 @@ export const claimXHandleCommand: Command = {
     'Connect X handle with registered address with a tweet of the signed secret. Example: /claimxhandle https://x.com/anyuser/status/1234567890',
   handler: async (message) => {
     console.log(message)
+    const tweet1 = await getTweet(message.text ?? '')
+    console.log(tweet1)
     const chatId = message.chat.id
     const text = message.text
     if (!text) {
