@@ -17,6 +17,7 @@
     "react-icons": "^5.4.0",
     "react-markdown": "^9.0.3",
     "remark-gfm": "^4.0.0",
+    "viem": "^2.22.17",
     "zustand": "^5.0.3"
   },
   "devDependencies": {
