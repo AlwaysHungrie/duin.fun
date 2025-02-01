@@ -4,7 +4,8 @@ module.exports = {
     {
       name: 'telegram-bot',
       script: './dist/index.js',
-      watch: true,
+      watch: ['./dist'],
+      ignore_watch: ['node_modules', 'logs', 'logs/*', 'logs/**/*'],
       env: {
         NODE_ENV: 'production',
       },
