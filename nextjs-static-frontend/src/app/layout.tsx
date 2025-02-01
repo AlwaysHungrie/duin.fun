@@ -11,7 +11,7 @@ const redditSans = Reddit_Sans({
 
 export const metadata: Metadata = {
   title: 'duin.fun',
-  description: 'bet on yourself, get set duing.',
+  description: 'bet on yourself, get set duin.',
   icons: {
     icon: '/favicon.svg',
   },

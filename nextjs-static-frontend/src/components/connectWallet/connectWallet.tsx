@@ -81,7 +81,7 @@ export default function ConnectWallet({
       >
         <Avatar height={26} width={26} />
         <span className="text-white text-sm font-bold mx-auto">
-          {isHomePage ? 'Get Duing' : 'Connect Wallet'}
+          {isHomePage ? 'Get Duin' : 'Connect Wallet'}
         </span>
         <div className="rounded-full w-[26px] h-[26px] flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
           <HiArrowRight className="text-white group-hover:text-black" />
