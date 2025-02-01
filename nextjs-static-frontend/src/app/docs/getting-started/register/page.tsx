@@ -4,9 +4,9 @@ const REGISTER = `
 # Register Wallet Address
 
 Before you can start adding tasks with @getduinbot, you need to register your wallet address.
-This ensures that when you make a commitment, someone else is not able to claim your commitment hash as their own before you can run the \`/duin\` command to register your hash.
+This ensures that when you make a commitment, someone else is not able to claim your commitment hash as their own before you run the \`/duin\` command to register your hash.
 
-There are two different ways by which you can use duin.fun -
+There are two different ways by which you can use **duin.fun** -
 
 The first way, by default, is the private way where all your added tasks remain in your personal chat with @getduinbot. 
 You simply stake your commitment, and get it back once you're done with your task.
@@ -48,7 +48,7 @@ How?
 
  - When you add a task, the @getduinbot will make a post on X from its official account along with your X handle
  - Any user can now create a commitment (like usual) and adding the hash as a comment to this post
- - When you complete your task, the @getduinbot will not only release your initial commitment but also release all the commitments added by other users
+ - When you complete your task, the @getduinbot will not only release your initial commitment but also give you all the commitments added by other users
  - Make sure to keep this X post engaging by adding more details and updates to get the community to *cheer* for you
 
 

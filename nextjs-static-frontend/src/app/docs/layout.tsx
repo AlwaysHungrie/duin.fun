@@ -28,7 +28,7 @@ export default function DocsLayout({
   ) ?? currentSection?.items[0]
 
   return (
-    <div className="h-screen flex">
+    <div className="h-dvh flex overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 
@@ -61,7 +61,7 @@ export default function DocsLayout({
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto max-h-[calc(100vh-64px)]">
+        <div className="flex-1 overflow-y-auto max-h-[calc(100dvh-64px)]">
           {children}
         </div>
       </div>

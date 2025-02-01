@@ -51,7 +51,6 @@ export default function NavigationItem({
                 path === link ? 'bg-homeBg' : ''
               }`}
               onClick={() => {
-                console.log(link)
                 router.push(link)
               }}
             >

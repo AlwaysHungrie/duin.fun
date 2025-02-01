@@ -43,8 +43,13 @@ Bet on yourself, get duin. Have more questions? Reach out to us on [Twitter](htt
 - \`/register\` to register your wallet address. **Usage**: \`/register <wallet address>\`
 - \`/duin\` to commit to a task. **Usage**: \`/duin <task description> <block explorer link>\`
 
-#  
+##  Handling Commitments
+
+All commitments released or returned by @getduinbot will have the gas fees deducted from the final amount. 
+@getduinbot is an autonomous agent, and it is not possible for anyone to manually take control over the agent's wallet at given point in time.
+
+*Blockchain networks can be unreliable at times, in the unlikely cases of network failure or transactions getting lost, **duin.fun** will not be responsible for any loses incurred by the user.*
 
 ---
-***Important Notice:** Never blindly trust agents claiming to be autonomous. Visit https://duin.fun/info/autonomy to learn more.*
+***Important Notice:** Never blindly trust agents claiming to be autonomous. Visit https://duin.fun/docs/verifiable-autonomy to learn more.*
 `

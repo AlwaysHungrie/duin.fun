@@ -7,6 +7,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { ethers } from 'ethers'
 import { HiArrowRight } from 'react-icons/hi2'
 import { formatWeiBalance, formatAddress } from '@/utils/formatting'
+import Avatar from '../avatar'
 
 export default function ConnectWallet({
   isHomePage = false,
@@ -43,42 +44,70 @@ export default function ConnectWallet({
     openDialog(<WalletDetails />)
   }, [activeWallet, authenticated, openDialog])
 
-  if (authenticated && user?.wallet?.address) {
+  const onClick = () => {
+    if (authenticated && user?.wallet?.address) {
+      showWalletDetails()
+    } else {
+      login()
+    }
+  }
+
+  const renderButton = () => {
+    if (authenticated && user?.wallet?.address) {
+      return (
+        <button
+          onClick={onClick}
+          className="group px-2 py-2 h-[42px] rounded-full bg-black text-white max-w-[224px] w-full flex items-center hover:bg-black/80 transition-colors duration-300"
+        >
+          <Avatar height={26} width={26} address={user?.wallet?.address} />
+          <div className="text-white text-xs flex gap-2 mx-auto px-2">
+            <span className="text-center">
+              {formatAddress(user?.wallet?.address)}
+            </span>
+            {/* <span className="text-center">(</span> */}
+            <span className="text-center">
+              ({formatWeiBalance(balanceInWei)} ETH)
+            </span>
+          </div>
+        </button>
+      )
+    }
+
     return (
       <button
-        onClick={showWalletDetails}
-        className="group px-2 py-2 h-[42px] rounded-full bg-black text-white max-w-[224px] w-full flex items-center hover:bg-black/80 transition-colors duration-300"
+        onClick={onClick}
+        disabled={!ready}
+        className="group px-2 py-2 h-[42px] rounded-full bg-black text-white max-w-[224px] w-full flex items-center hover:bg-black/80 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <div className="bg-white rounded-full w-[26px] h-[26px] flex items-center justify-center overflow-hidden"></div>
-
-        <div className="text-white text-xs flex gap-2 mx-auto px-2">
-          <span className="text-center">
-            {formatAddress(user?.wallet?.address)}
-          </span>
-          <span className="text-center">|</span>
-          <span className="text-center">
-            {formatWeiBalance(balanceInWei)} ETH
-          </span>
+        <Avatar height={26} width={26} />
+        <span className="text-white text-sm font-bold mx-auto">
+          {isHomePage ? 'Get Duing' : 'Connect Wallet'}
+        </span>
+        <div className="rounded-full w-[26px] h-[26px] flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
+          <HiArrowRight className="text-white group-hover:text-black" />
         </div>
       </button>
     )
   }
 
   return (
-    <button
-      onClick={() => {
-        login()
-      }}
-      disabled={!ready}
-      className="group px-2 py-2 h-[42px] rounded-full bg-black text-white max-w-[224px] w-full flex items-center hover:bg-black/80 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      <div className="bg-white rounded-full w-[26px] h-[26px] flex items-center justify-center" />
-      <span className="text-white text-sm font-bold mx-auto">
-        {isHomePage ? 'Get Duing' : 'Connect Wallet'}
-      </span>
-      <div className="rounded-full w-[26px] h-[26px] flex items-center justify-center group-hover:bg-white group-hover:text-black transition-colors duration-300">
-        <HiArrowRight className="text-white group-hover:text-black" />
+    <div className="flex flex-col gap-1">
+      {renderButton()}
+      <div className="flex text-gray-500 text-xs justify-center">
+        <span
+          className="hover:text-black cursor-pointer"
+          onClick={onClick}
+        >
+          Sign Message
+        </span>
+        <span className="mx-2">|</span>
+        <span
+          className="hover:text-black cursor-pointer"
+          onClick={onClick}
+        >
+          Send Tokens
+        </span>
       </div>
-    </button>
+    </div>
   )
 }

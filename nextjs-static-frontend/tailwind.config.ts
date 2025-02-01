@@ -25,6 +25,10 @@ export default {
             transform: 'translateY(0)',
           },
         },
+        rotate: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       screens: {
         xl2: '1422px',
@@ -34,6 +38,7 @@ export default {
         'bounce-slow': 'bounce-slow 60s ease-in-out infinite',
         'spin-slow-mobile': 'spin 30s linear infinite',
         'bounce-slow-mobile': 'bounce-slow 30s ease-in-out infinite',
+        'rotate': 'rotate 6s linear infinite',
       },
     },
   },
