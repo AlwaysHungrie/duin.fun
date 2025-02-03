@@ -193,7 +193,7 @@ async function parseDuinMessage(
   response.transactionDetails = transactionDetails
   response.initiateRefund = true
 
-  const task = extractTask(text, txHash)
+  const task = extractTask(text, txHash, isPrivate)
   response.task = task
 
   let responseObject = null

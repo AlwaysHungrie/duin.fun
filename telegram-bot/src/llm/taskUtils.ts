@@ -1,5 +1,5 @@
-export function extractTask(message: string, hash: string) {
-  const messageText = message.substring(6)
+export function extractTask(message: string, hash: string, isPrivate: boolean) {
+  const messageText = message.substring(isPrivate ? 13 : 6)
   
   // URL regex pattern that includes the hash
   const urlRegex = new RegExp(`https?://[^\\s]*${hash}[^\\s]*`, 'g')
