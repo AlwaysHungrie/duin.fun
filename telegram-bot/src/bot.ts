@@ -9,8 +9,9 @@ export const initBot = () => {
   commands.forEach(({ command, handler }) => {
     const cleanCommand = command.replace(/^\//, '')
     const commandRegex = new RegExp(
-      `(?:^|\\s)/?${cleanCommand}(?:@\\w+)?(?=\\s|$)`,
-      'i'  // case insensitive
+      // More strict pattern that ensures exact command match
+      `^/?${cleanCommand}(?:@\\w+)?(?:\\s|$)`,
+      'i'
     )
     bot.onText(commandRegex, handler)
   })
@@ -20,7 +21,6 @@ export const initBot = () => {
       processReply(message, bot)
     }
   })
-  
   console.log('Bot is running...')
 }
 
