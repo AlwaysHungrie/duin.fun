@@ -38,6 +38,9 @@ if (!twitterApiKey || !twitterApiKeySecret || !twitterBearerToken || !twitterAcc
 const baseRpcUrl = process.env.BASE_RPC_URL || 'https://mainnet.base.org'
 const scrollRpcUrl = process.env.SCROLL_RPC_URL || 'https://scroll-mainnet.chainstacklabs.com'
 const ethereumRpcUrl = process.env.ETHEREUM_RPC_URL || 'https://eth.llamarpc.com'
+ 
+const EXAMPLE_TASK = `/duin Implement a proof system that ensures duin\\.fun bot responses as well as wallet keys cannot be compromised or tampered with\\. https://basescan\\.org/tx/0x04ed94c3f3eb6be159bc1de9cf49601b89e081e0b4e6ae00026d42b8b165adc4`
+const CHECK_EXAMPLE_TASK = '/duin Implement a proof system that ensures duin.fun bot responses as well as wallet keys cannot be compromised or tampered with. https://basescan.org/tx/0x04ed94c3f3eb6be159bc1de9cf49601b89e081e0b4e6ae00026d42b8b165adc4'
 
 export default {
   BOT_TOKEN: token,
@@ -55,4 +58,6 @@ export default {
     ACCESS_TOKEN: twitterAccessToken,
     ACCESS_TOKEN_SECRET: twitterAccessTokenSecret,
   },
+  EXAMPLE_TASK,
+  CHECK_EXAMPLE_TASK,
 }
