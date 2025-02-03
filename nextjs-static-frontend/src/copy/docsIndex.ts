@@ -9,9 +9,9 @@ export const DOCS_INDEX = [
         link: '/docs/getting-started/introduction',
       },
       {
-        key: 'register',
-        label: 'Register',
-        link: '/docs/getting-started/register',
+        key: 'registration',
+        label: 'Registration',
+        link: '/docs/getting-started/registration',
       },
       {
         key: 'attestations',

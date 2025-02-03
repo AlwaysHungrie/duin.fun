@@ -2,26 +2,29 @@
 
 import ConnectWallet from '@/components/connectWallet/connectWallet'
 import { CONFIG } from '@/config'
-// import ConnectWallet from '@/components/connectWallet/connectWallet'
 import { LANDING_PAGE } from '@/copy/landingPage'
-// import { usePrivy, useWallets } from '@privy-io/react-auth'
 import Image from 'next/image'
 import Link from 'next/link'
 import { HiArrowRight } from 'react-icons/hi2'
 
 export default function Home() {
-  const handleLaunchOnTelegram = () => {
-    window.open(CONFIG.TELEGRAM_URL, '_blank')
-  }
-
   return (
     <div className="bg-homeBg font-redditSans">
       <div className="flex flex-col items-center h-dvh p-4 overflow-hidden w-screen relative">
         <div className="flex w-full z-10 pt-2">
           <ConnectWallet isHomePage={true} />
+          <div className="flex items-center gap-2 ml-auto pr-2">
+            <Link href={CONFIG.TELEGRAM_URL} target="_blank">
+              <Image src="/telegram-blue.svg" alt="telegram" height={32} width={32} className="opacity-80 hover:opacity-100" />
+            </Link>
+            <Link href={CONFIG.X_URL} target="_blank">
+              <Image src="/twitter.svg" alt="x" height={32} width={32} className="opacity-70 hover:opacity-100" />
+            </Link>
+          </div>
         </div>
-        <div
-          onClick={handleLaunchOnTelegram}
+        <Link
+          href={CONFIG.TELEGRAM_URL}
+          target="_blank"
           className={`mt-auto z-10 w-full max-w-[400px] sm:max-w-[500px] md:max-w-[600px] lg:max-w-[825px] relative aspect-video rounded-3xl lg:rounded-[32px] overflow-hidden cursor-pointer hover:rotate-1 hover:scale-105 transition-all duration-300 group`}
         >
           <Image src="/heroCard.svg" alt="hero" fill className="object-cover" />
@@ -42,7 +45,7 @@ export default function Home() {
               <HiArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:scale-110 md:group-hover:scale-150 transition-all duration-300" />
             </button>
           </div>
-        </div>
+        </Link>
         <div className="absolute bottom-[-60px] sm:bottom-[-80px] md:bottom-[-100px] lg:bottom-[-120px] left-0 w-[442px] sm:w-[600px] md:w-[700px] lg:w-[884px] h-[422px] sm:h-[600px] md:h-[700px] lg:h-[845px] animate-spin-slow-mobile md:animate-spin-slow">
           <Image
             src="/landing/artifact1.svg"

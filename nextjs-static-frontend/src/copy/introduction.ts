@@ -3,6 +3,16 @@ export const INTRODUCTION = `
 
 Bet on yourself, get duin. Have more questions? Reach out to us on [Twitter](https://twitter.com/duinfun).
 
+## Overview
+
+**duin.fun** is an app for humans and agents to create meaningful commitments and get rewarded for following through. 
+By staking crypto on your own goals and tasks, you create a tangible incentive to complete what you set out to do. 
+Get the *duin community* to rally behind you by adding their own stakes to your commitments.
+
+Our autonomous agent evaluates your claims and releases your stake back to you upon successful completion of your commitment.
+**duin.fun** leverages various privacy-preserving attestation systems to ensure the validity of all statements made on the platform,
+building trust among humans and agents alike.
+
 ## How It Works
 
 ### 1. Register Your Wallet
@@ -22,17 +32,15 @@ Bet on yourself, get duin. Have more questions? Reach out to us on [Twitter](htt
 
 ### 3. Add Your Commitment
 - Start a commitment using the \`/duin\` command and a message. This message must contain a clear task description and a block explorer link containing your commitment transaction hash.
-- Following is an example of valid \`/duin\` command. *You can copy this exact message and paste it in telegram without registering your wallet, to see how duin command works as it has been programmed to act as sample interaction:*
+- Following is an example of valid \`/duin\` command. *This particular message has been programmed as a sample interaction. You can copy this exact message and paste it in telegram without registering your wallet, to see how duin command works:*
 ~~~
 /duin Implement a proof system that ensures duin.fun bot responses as well as wallet keys cannot be compromised or tampered with. https://basescan.org/tx/0x04ed94c3f3eb6be159bc1de9cf49601b89e081e0b4e6ae00026d42b8b165adc4
 ~~~
 - If the duin bot is unable to understand your task or how it should be evaluating if you have completed your task, it will return your commitment back to you. 
 
 ### 4. Complete Your Task
-- Once the bot decides to accept your commitment, it will send you a confirmation message.
-- After you have completed your task, you can reply to same message explaining how you have completed your task.
-- If satisfied with your response, the bot will release your staked amount back to you.
-- *You can try again by replying to the confirmation message, if your stake was not released.*
+- You will receive a confirmation message from the bot once it has accepted your commitment. After you have completed your task, reply to same message explaining how you have completed your task.
+- If satisfied, the bot will release your staked amount back to you. *You can try again by replying to the confirmation message, if your stake was not released.*
 
 ## Available Commands
 
@@ -41,9 +49,11 @@ Bet on yourself, get duin. Have more questions? Reach out to us on [Twitter](htt
 - \`/address\` to display @getduinbot's wallet address
 - \`/supportednetworks\` to display supported networks
 - \`/register\` to register your wallet address. **Usage**: \`/register <wallet address>\`
+- \`claimxhandle\` - to connect X handle with registered address with a tweet of the signed secret. **Usage**: \`/claimxhandle https://x.com/<username>/status/<tweetId>\`
 - \`/duin\` to commit to a task. **Usage**: \`/duin <task description> <block explorer link>\`
+- \`/duinprivate\` - to commit to a task privately. **Usage**: \`/duinprivate <task description> <block explorer link>\`
 
-##  Handling Commitments
+##  Handling of Commitments
 
 All commitments released or returned by @getduinbot will have the gas fees deducted from the final amount. 
 @getduinbot is an autonomous agent, and it is not possible for anyone to manually take control over the agent's wallet at given point in time.
