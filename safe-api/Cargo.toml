@@ -1,0 +1,38 @@
+[package]
+name = "notary"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { version = "1.38", features = [
+  "rt",
+  "rt-multi-thread",
+  "macros",
+  "net",
+  "io-std",
+  "fs",
+] }
+tokio-rustls = { version = "0.24" }
+tokio-util = { version = "0.7" }
+dotenv = { version = "0.15.0" }
+hyper = { version = "1.1", features = ["client", "http1"] }
+hyper-util = { version = "0.1", features = ["full"] }
+http-body-util = { version = "0.1" }
+serde = { version = "1.0" }
+serde_json = { version = "1.0" }
+bincode = { version = "1.3" }
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3" }
+chrono = { version = "0.4" }
+hex = { version = "0.4" }
+
+notary-client = { path = "../tlsn/crates/notary/client" }
+tlsn-common = { path = "../tlsn/crates/common" }
+tlsn-core = { path = "../tlsn/crates/core" }
+tlsn-prover = { path = "../tlsn/crates/prover" }
+tlsn-utils = { git = "https://github.com/tlsnotary/tlsn-utils", rev = "e7b2db6" }
+tlsn-utils-aio = { git = "https://github.com/tlsnotary/tlsn-utils", rev = "e7b2db6" }
+
+[[example]]
+name = "verify"
+path = "src/verify.rs"
